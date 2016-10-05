@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+
+  brand = {
+    name: 'Heavy Craft',
+    logo: 'assets/logo.svg'
+  };
+
+  navigation = [
+    { name: 'Home', href: '#' },
+    { name: 'Services', href: '#' },
+    { name: 'Contact Us', href: '#' },
+  ];
 }
