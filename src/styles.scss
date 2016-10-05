@@ -2,6 +2,21 @@
 @import 'variables';
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
+.body {
+    font-family: 'open-sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'canada-type-gibson', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+}
+
+h1, .h1 {
+    font-size: 9rem;
+}
+
 .fill {
     height: 100%;
     width: 100%;
