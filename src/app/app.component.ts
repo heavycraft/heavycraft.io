@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HeavyCraftService } from './heavy-craft.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -25,5 +27,11 @@ export class AppComponent {
     header: 'Heavy Craft',
     subHeader: 'A Design & Development Company'
   };
+
+  test: Observable<any>;
+
+  constructor(private hcService: HeavyCraftService) {
+    this.test = hcService.getHero();
+  }
 
 }

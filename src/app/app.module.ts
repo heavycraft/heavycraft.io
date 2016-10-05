@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HeroComponent } from './hero/hero.component';
 
+import { HeavyCraftService } from './heavy-craft.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,7 @@ import { HeroComponent } from './hero/hero.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [HeavyCraftService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
