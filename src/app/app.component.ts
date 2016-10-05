@@ -8,7 +8,9 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  hero: any;
+  heroIsLoading = true;
 
   brand = {
     name: 'Heavy Craft',
@@ -21,17 +23,11 @@ export class AppComponent {
     { name: 'Contact Us', href: '#' },
   ];
 
-  hero = {
-    image: 'http://api.heavycraft.io/storage/uploads/00000000002.png',
-    headerTop: 'We are',
-    header: 'Heavy Craft',
-    subHeader: 'A Design & Development Company'
-  };
-
-  test: Observable<any>;
-
   constructor(private hcService: HeavyCraftService) {
-    this.test = hcService.getHero();
+    hcService.getHero().subscribe( (hero) => {
+      this.hero = hero;
+      this.heroIsLoading = false;
+    });
   }
 
 }

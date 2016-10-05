@@ -9,27 +9,38 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/cache';
 import 'rxjs/add/observable/from';
 
-const API_URL = 'http://api.heavycraft.io/api/1';
+import { environment } from '../environments/environment';
+
+const API_BASE_URL = 'http://api.heavycraft.io';
+const API_URL = `${API_BASE_URL}/api/1`;
 
 @Injectable()
 export class HeavyCraftService {
 
   private _hero: Observable<any> = null;
+  params: URLSearchParams = new URLSearchParams();
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    this.params.set('access_token', environment.apiToken);
+  }
 
   getHero(): Observable<any> {
     let endpoint = `${API_URL}/tables/hero/rows/1`;
-    this._hero = this.http.get(endpoint)
-      .map(this.extractData)
+    this._hero = this.http.get(endpoint, {search: this.params})
+      .map(this.extractHeroData)
       .catch(this.handleError);
     return this._hero;
   }
 
-  private extractData(res: Response) {
-    console.log(res.json());
+  private extractHeroData(res: Response) {
     let body = res.json();
-    return body || {};
+    let hero = {
+      headerTop: body.header_line_1,
+      header: body.header_main,
+      subHeader: body.sub_header,
+      image: `${API_BASE_URL}/${body.hero_image.url}`
+    };
+    return hero || {};
   }
 
   private handleError(error) {
