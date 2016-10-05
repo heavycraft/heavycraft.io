@@ -2,7 +2,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-hero',
+  selector: 'hc-hero',
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss']
 })
