@@ -18,4 +18,12 @@ export class AppComponent {
     { name: 'Services', href: '#' },
     { name: 'Contact Us', href: '#' },
   ];
+
+  hero = {
+    image: 'http://api.heavycraft.io/storage/uploads/00000000002.png',
+    headerTop: 'We are',
+    header: 'Heavy Craft',
+    subHeader: 'A Design & Development Company'
+  };
+
 }
