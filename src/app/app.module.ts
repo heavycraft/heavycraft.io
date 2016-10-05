@@ -8,12 +8,14 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HeroComponent } from './hero/hero.component';
 
 import { HeavyCraftService } from './heavy-craft.service';
+import { NextPageDirective } from './shared/next-page.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    HeroComponent
+    HeroComponent,
+    NextPageDirective
   ],
   imports: [
     BrowserModule,
