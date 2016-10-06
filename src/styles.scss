@@ -21,3 +21,14 @@ h1, .h1 {
     height: 100%;
     width: 100%;
 }
+
+a.next-page {
+    position: absolute;
+    left: 50%;
+    width: 0;
+    color: white;
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
