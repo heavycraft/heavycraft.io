@@ -10,6 +10,7 @@ import { HeroComponent } from './hero/hero.component';
 import { HeavyCraftService } from './heavy-craft.service';
 import { NextPageDirective } from './shared/next-page.directive';
 import { AboutComponent } from './about/about.component';
+import { ServiceComponent } from './about/service/service.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AboutComponent } from './about/about.component';
     NavigationComponent,
     HeroComponent,
     NextPageDirective,
-    AboutComponent
+    AboutComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,

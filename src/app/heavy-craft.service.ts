@@ -14,17 +14,40 @@ import { environment } from '../environments/environment';
 const API_BASE_URL = 'http://api.heavycraft.io';
 const API_URL = `${API_BASE_URL}/api/1`;
 
+interface IHero {
+  headerTop: string;
+  header: string;
+  subHeader: string;
+  image: string;
+}
+
+interface IService {
+  id?: number;
+  active?: number;
+  name: string;
+  description: string;
+  icon?: any;
+}
+
+interface IAbout {
+  title: string;
+  description: string;
+  services?: Observable<IService[]>;
+}
+
 @Injectable()
 export class HeavyCraftService {
 
-  private _hero: Observable<any> = null;
+  private _hero: Observable<IHero> = null;
+  private _about: Observable<IAbout> = null;
+
   params: URLSearchParams = new URLSearchParams();
 
   constructor(private http: Http) {
     this.params.set('access_token', environment.apiToken);
   }
 
-  getHero(): Observable<any> {
+  getHero(): Observable<IHero> {
     let endpoint = `${API_URL}/tables/hero/rows/1`;
     this._hero = this.http.get(endpoint, {search: this.params})
       .map(this.extractHeroData)
@@ -32,9 +55,45 @@ export class HeavyCraftService {
     return this._hero;
   }
 
+  getAbout(): Observable<IAbout> {
+    let endpoint = `${API_URL}/tables/about/rows/1`;
+    return this.http.get(endpoint, {search: this.params})
+      .map(this.extractAboutData)
+      .catch(this.handleError);
+  }
+
+  getServices(): Observable<IService[]> {
+    let endpoint = `${API_URL}/tables/services/rows`;
+    return this.http.get(endpoint, {search: this.params})
+      .map(this.extractServiceData)
+      .catch(this.handleError);
+  }
+
+  private extractAboutData(res: Response) {
+    let body = res.json();
+    let about: IAbout = {
+      title: body.header,
+      description: body.body,
+    };
+    return about || {};
+  }
+
+  private extractServiceData(res: Response) {
+    let body = res.json();
+    let services: IService[] = [];
+    body.rows.forEach((s: IService) => {
+      services.push({
+        name: s.name,
+        description: s.description,
+        icon: (s.icon ? `${API_BASE_URL}/${s.icon.url}` : null)
+      });
+    });
+    return services;
+  }
+
   private extractHeroData(res: Response) {
     let body = res.json();
-    let hero = {
+    let hero: IHero = {
       headerTop: body.header_line_1,
       header: body.header_main,
       subHeader: body.sub_header,
