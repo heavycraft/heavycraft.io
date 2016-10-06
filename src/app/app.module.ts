@@ -1,16 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+// Components
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HeroComponent } from './hero/hero.component';
-
-import { HeavyCraftService } from './heavy-craft.service';
-import { NextPageDirective } from './shared/next-page.directive';
 import { AboutComponent } from './about/about.component';
 import { ServiceComponent } from './about/service/service.component';
+import { ContactComponent } from './contact/contact.component';
+import { ContactFormComponent } from './contact/contact-form/contact-form.component';
+
+// Directives
+import { NextPageDirective } from './shared/next-page.directive';
+
+// Services
+import { HeavyCraftService } from './heavy-craft.service';
+import { MailService } from './mail.service';
+
 
 @NgModule({
   declarations: [
@@ -19,14 +27,16 @@ import { ServiceComponent } from './about/service/service.component';
     HeroComponent,
     NextPageDirective,
     AboutComponent,
-    ServiceComponent
+    ServiceComponent,
+    ContactComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule
   ],
-  providers: [HeavyCraftService],
+  providers: [HeavyCraftService, MailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

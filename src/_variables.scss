@@ -43,7 +43,7 @@ $gray-light:                #818a91;
 $gray-lighter:              #eceeef;
 $gray-lightest:             #f7f7f9;
 
-$brand-primary:             #0275d8;
+$brand-primary:             #F44B2B;
 $brand-success:             #5cb85c;
 $brand-info:                #5bc0de;
 $brand-warning:             #f0ad4e;
@@ -304,7 +304,7 @@ $input-border-radius-lg:         $border-radius-lg;
 $input-border-radius-sm:         $border-radius-sm;
 
 $input-bg-focus:                 $input-bg;
-$input-border-focus:             #66afe9;
+$input-border-focus:             $brand-inverse;
 $input-box-shadow-focus:         rgba(102,175,233,.6);
 $input-color-focus:              $input-color;
 

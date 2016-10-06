@@ -38,3 +38,11 @@ a.next-page {
 .text-light {
     font-weight: 300;
 }
+
+.form-control {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    font-family: 'open-sans';
+}

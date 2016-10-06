@@ -1,0 +1,38 @@
+<form role="form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div class="form-group"
+    [class.has-warning]="fullName.dirty && !fullName.valid" 
+    [class.has-danger]="fullName.dirty && !fullName.valid && fullName.touched" 
+    [class.has-success]="fullName.valid">
+    <label for="name" class="sr-only">Name:</label>
+    <input type="text" class="form-control" id="name" formControlName="fullName" placeholder="YOUR NAME">
+    <div *ngIf="fullName.dirty && fullName.touched">
+      <div class="form-control-feedback" *ngIf="fullName.hasError('required')">Your name is required.</div>
+    </div>
+  </div>
+
+  <div class="form-group" 
+    [class.has-warning]="emailAddress.dirty && !emailAddress.valid" 
+    [class.has-danger]="emailAddress.dirty && !emailAddress.valid && emailAddress.touched" 
+    [class.has-success]="emailAddress.valid">
+    <label for="email" class="sr-only">Email:</label>
+    <input type="email" class="form-control" id="email" formControlName="email" placeholder="YOUR EMAIL">
+    <div *ngIf="emailAddress.dirty && emailAddress.touched">
+      <div class="form-control-feedback" *ngIf="emailAddress.hasError('required')">Email address is required.</div>
+      <div class="form-control-feedback" *ngIf="emailAddress.hasError('incorrectMailFormat')">Oops!  That doesn't seem to be a valid email address.</div>
+    </div>
+  </div>
+
+  <div class="form-group" 
+    [class.has-warning]="message.dirty && !message.valid" 
+    [class.has-danger]="message.dirty && !message.valid && message.touched" 
+    [class.has-success]="message.valid">
+    <label for="message" class="sr-only">Message:</label>
+    <textarea class="form-control" id="message" formControlName="message" rows="3" placeholder="YOUR MESSAGE"></textarea>
+    <div *ngIf="message.dirty && message.touched">
+      <div class="form-control-feedback" *ngIf="message.hasError('required')">A message is required.</div>
+      <div class="form-control-feedback" *ngIf="message.hasError('notEnoughWords')">Please provide more information so we can respond appropriately.</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-outline-primary" [disabled]="!contactForm.valid">Send Message</button>
+</form>

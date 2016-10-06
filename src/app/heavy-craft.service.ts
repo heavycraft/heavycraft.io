@@ -35,6 +35,11 @@ interface IAbout {
   services?: Observable<IService[]>;
 }
 
+interface IContact {
+  title: string;
+  description: string;
+}
+
 @Injectable()
 export class HeavyCraftService {
 
@@ -67,6 +72,22 @@ export class HeavyCraftService {
     return this.http.get(endpoint, {search: this.params})
       .map(this.extractServiceData)
       .catch(this.handleError);
+  }
+
+  getContact(): Observable<IContact> {
+    let endpoint = `${API_URL}/tables/contact/rows/1`;
+    return this.http.get(endpoint, {search: this.params})
+      .map(this.extractContactData)
+      .catch(this.handleError);
+  }
+
+  private extractContactData(res: Response) {
+    let body = res.json();
+    let contact: IContact = {
+      title: body.header,
+      description: body.body
+    };
+    return contact || {};
   }
 
   private extractAboutData(res: Response) {
