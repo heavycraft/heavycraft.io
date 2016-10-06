@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, Renderer, AfterViewInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer, AfterViewInit } from '@angular/core';
 
 @Directive({
   selector: '[nextPage]'
@@ -7,19 +7,31 @@ export class NextPageDirective implements AfterViewInit {
 
   @Input('nextPage') nextPage: string;
 
+  button: HTMLElement;
+  bottom: number;
+  height = 50;
+  margin = 50;
+
+  @HostListener('window:resize')
+  onResize() {
+    this.setBottom();
+  }
+
   constructor(private el: ElementRef, private renderer: Renderer) { }
 
   ngAfterViewInit() {
-    let height = 50;
-    let margin = 50;
-    let bottom = this.el.nativeElement.getBoundingClientRect().bottom - height - margin;
-    let button = this.renderer.createElement(this.el.nativeElement, 'a');
-    button.innerHTML = '&darr;';
-    this.renderer.setElementClass(button, 'next-page', true);
-    this.renderer.setElementAttribute(button, 'href', `#${this.nextPage}`);
-    this.renderer.setElementStyle(button, 'top', bottom + 'px');
-    this.renderer.setElementStyle(button, 'fontSize', `${height}px`);
-    this.renderer.setElementStyle(button, 'lineHeight', `${height}px`);
+    this.button = this.renderer.createElement(this.el.nativeElement, 'a');
+    this.button.innerHTML = '&darr;';
+    this.renderer.setElementClass(this.button, 'next-page', true);
+    this.renderer.setElementAttribute(this.button, 'href', `#${this.nextPage}`);
+    this.renderer.setElementStyle(this.button, 'fontSize', `${this.height}px`);
+    this.renderer.setElementStyle(this.button, 'lineHeight', `${this.height}px`);
+    this.setBottom();
+  }
+
+  private setBottom(){
+    let bottom = this.el.nativeElement.getBoundingClientRect().bottom - this.height - this.margin;
+    this.renderer.setElementStyle(this.button, 'top', bottom + 'px');
   }
 
 }
