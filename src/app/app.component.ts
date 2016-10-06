@@ -19,8 +19,8 @@ export class AppComponent {
 
   navigation = [
     { name: 'Home', href: '#' },
-    { name: 'Services', href: '#' },
-    { name: 'Contact Us', href: '#' },
+    { name: 'Services', href: '#about' },
+    { name: 'Contact Us', href: '#contact' },
   ];
 
   constructor(private hcService: HeavyCraftService) {

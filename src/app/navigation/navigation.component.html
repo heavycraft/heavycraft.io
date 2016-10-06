@@ -2,7 +2,7 @@
 <div class="pull-xs-right">
   <ul class="nav navbar-nav">
     <li class="nav-item" *ngFor="let link of links">
-      <a class="nav-link" href="#">{{link.name}}</a>
+      <a class="nav-link" [href]="link.href">{{link.name}}</a>
     </li>
   </ul>
 </div>
