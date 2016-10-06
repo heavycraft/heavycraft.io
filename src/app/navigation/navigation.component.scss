@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .navbar-brand {
     padding: 0px;
   height: 80px;
@@ -12,6 +14,7 @@
 .nav >li >a {
   padding-top: 30px;
   padding-bottom: 30px;
+  font-family: $headings-font-family;
 }
 
 .navbar-toggle {
