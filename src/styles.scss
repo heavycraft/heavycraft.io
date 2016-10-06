@@ -46,3 +46,9 @@ a.next-page {
     border-radius: 0;
     font-family: 'open-sans';
 }
+
+// Push anchor point up so it is viewable under navigation
+.pad-anchor {
+    margin-top: -100px;
+    padding-top: 100px;
+}

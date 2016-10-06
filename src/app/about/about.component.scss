@@ -4,4 +4,6 @@
     display: block;
     width: 100%;
     background-color: $gray-lighter;
+    position:relative;
+    z-index: 9;
 }
