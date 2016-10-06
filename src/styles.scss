@@ -6,31 +6,9 @@
     font-family: 'open-sans', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'canada-type-gibson', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.4rem;
-}
-
-h1, .h1 {
-    font-size: 9rem;
-}
-
-@include media-breakpoint-down(sm) { 
-    h1, .h1 {
-        font-size: 5rem;
-    }
-
-    h2, .h2 {
-        font-size: 1.5rem;
-    }
-
-    h6, .h6 {
-        font-weight: normal;
-        font-size: 0.6rem;
-        letter-spacing: 0.2rem;
-    }
+.display-1, .display-2, .display-3, .display-4 {
+    font-family: 'open-sans', sans-serif;
+    letter-spacing: 0;
 }
 
 .fill {
@@ -47,4 +25,16 @@ a.next-page {
     &:hover{
         text-decoration: none;
     }
+}
+
+.letter-space {
+    letter-spacing: 0.2rem;
+}
+
+.letter-space-wide {
+    letter-spacing: 0.4rem;
+}
+
+.text-light {
+    font-weight: 300;
 }

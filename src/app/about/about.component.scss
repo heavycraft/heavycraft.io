@@ -1,0 +1,7 @@
+@import '../../variables';
+
+:host {
+    display: block;
+    width: 100%;
+    background-color: $gray-lighter;
+}

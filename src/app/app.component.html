@@ -1,8 +1,9 @@
 <hc-navigation [brand]="brand.name" [logo]="brand.logo" [links]="navigation"></hc-navigation>
-<hc-hero *ngIf="!heroIsLoading" 
-    [nextPage]="'test'"
+<hc-hero id="hero" *ngIf="!heroIsLoading" 
+    [nextPage]="'about'"
     [image]="hero.image" 
     [headerTop]="hero.headerTop" 
     [header]="hero.header" 
     [subHeader]="hero.subHeader">
 </hc-hero>
+<hc-about id="about"></hc-about>

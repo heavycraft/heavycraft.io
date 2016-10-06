@@ -9,13 +9,15 @@ import { HeroComponent } from './hero/hero.component';
 
 import { HeavyCraftService } from './heavy-craft.service';
 import { NextPageDirective } from './shared/next-page.directive';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     HeroComponent,
-    NextPageDirective
+    NextPageDirective,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
