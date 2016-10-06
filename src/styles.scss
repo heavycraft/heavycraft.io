@@ -17,6 +17,22 @@ h1, .h1 {
     font-size: 9rem;
 }
 
+@include media-breakpoint-down(sm) { 
+    h1, .h1 {
+        font-size: 5rem;
+    }
+
+    h2, .h2 {
+        font-size: 1.5rem;
+    }
+
+    h6, .h6 {
+        font-weight: normal;
+        font-size: 0.6rem;
+        letter-spacing: 0.2rem;
+    }
+}
+
 .fill {
     height: 100%;
     width: 100%;
