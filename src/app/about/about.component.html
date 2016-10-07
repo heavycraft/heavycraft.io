@@ -8,7 +8,7 @@
   <div class="row">
     <hc-service class="col-xs-12 col-sm-4 text-xs-center" *ngFor="let service of services | async"
       [icon]="service.icon" 
-      [title]="service.title"
+      [title]="service.name"
       [description]="service.description">
     </hc-service>
   </div>
