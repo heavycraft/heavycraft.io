@@ -20,6 +20,7 @@ import { NextPageDirective } from './shared/next-page.directive';
 import { HeavyCraftService } from './heavy-craft.service';
 import { MailService } from './mail.service';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { SocialComponent } from './social/social.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     ServiceComponent,
     ContactComponent,
     ContactFormComponent,
-    MapComponent
+    MapComponent,
+    SocialComponent
   ],
   imports: [
     BrowserModule,

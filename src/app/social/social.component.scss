@@ -1,0 +1,13 @@
+@import '../../variables';
+
+:host {
+    display:block;
+    background-color: $gray-dark;
+    width:100%;
+    position:relative;
+    z-index: 6;
+}
+
+a {
+    font-family: $headings-font-family;
+}

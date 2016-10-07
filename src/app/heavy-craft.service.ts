@@ -54,6 +54,11 @@ interface ILocation {
   icon?: any;
 }
 
+interface ISocial {
+  name: string;
+  url: string;
+}
+
 @Injectable()
 export class HeavyCraftService {
 
@@ -63,6 +68,7 @@ export class HeavyCraftService {
 
   constructor(private http: Http) {
     this.params.set('access_token', environment.apiToken);
+    this.params.set('status', '1'); //only show active
   }
 
   getHero(): Observable<IHero> {
@@ -99,6 +105,25 @@ export class HeavyCraftService {
     return this.http.get(endpoint, {search: this.params})
       .map(this.extractLocationData)
       .catch(this.handleError);
+  }
+
+  getSocial(): Observable<ISocial> {
+    let endpoint = `${API_URL}/tables/social/rows`;
+    return this.http.get(endpoint, {search: this.params})
+      .map(this.extractSocialData)
+      .catch(this.handleError);
+  }
+
+  private extractSocialData(res: Response) {
+    let body = res.json();
+    let social: ISocial[] = [];
+    body.rows.forEach((s: ISocial) => {
+      social.push({
+        name: s.name,
+        url: s.url
+      });
+    });
+    return social;
   }
 
   private extractLocationData(res: Response) {

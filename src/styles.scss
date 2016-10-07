@@ -3,11 +3,11 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 .body {
-    font-family: 'open-sans', sans-serif;
+    font-family: $font-family-sans-serif;
 }
 
 .display-1, .display-2, .display-3, .display-4 {
-    font-family: 'open-sans', sans-serif;
+    font-family: $font-family-sans-serif;
     letter-spacing: 0;
 }
 
@@ -44,7 +44,7 @@ a.next-page {
     border-left: none;
     border-right: none;
     border-radius: 0;
-    font-family: 'open-sans';
+    font-family: $font-family-sans-serif;
 }
 
 // Push anchor point up so it is viewable under navigation
