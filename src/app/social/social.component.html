@@ -1,7 +1,7 @@
 <div class="container p-y-3 bg-inverse">
   <div class="row">
     <div class="col-xs text-xs-center" *ngFor="let link of social | async">
-      <a class="m-b-2 text-uppercase letter-space">{{link.name}}</a>
+      <a class="m-b-2 text-uppercase letter-space" [href]="link.url">{{link.name}}</a>
     </div>
   </div>
 </div>
