@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { ServiceComponent } from './about/service/service.component';
 import { ContactComponent } from './contact/contact.component';
 import { ContactFormComponent } from './contact/contact-form/contact-form.component';
+import { MapComponent } from './map/map.component';
 
 // Directives
 import { NextPageDirective } from './shared/next-page.directive';
@@ -18,7 +19,7 @@ import { NextPageDirective } from './shared/next-page.directive';
 // Services
 import { HeavyCraftService } from './heavy-craft.service';
 import { MailService } from './mail.service';
-
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,16 @@ import { MailService } from './mail.service';
     AboutComponent,
     ServiceComponent,
     ContactComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDpHoaD-fGylgBp4YaDdDdD641sZIxKHY4'
+    })
   ],
   providers: [HeavyCraftService, MailService],
   bootstrap: [AppComponent]

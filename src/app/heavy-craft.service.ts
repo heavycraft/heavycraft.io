@@ -40,11 +40,24 @@ interface IContact {
   description: string;
 }
 
+interface ILocation {
+  lat: number;
+  lng: number;
+  city: string;
+  state: string;
+  state_code: string;
+  country_code: string;
+  street_name: string;
+  street_number: string;
+  zip: string;
+  zoom_level: number;
+  icon?: any;
+}
+
 @Injectable()
 export class HeavyCraftService {
 
   private _hero: Observable<IHero> = null;
-  private _about: Observable<IAbout> = null;
 
   params: URLSearchParams = new URLSearchParams();
 
@@ -79,6 +92,33 @@ export class HeavyCraftService {
     return this.http.get(endpoint, {search: this.params})
       .map(this.extractContactData)
       .catch(this.handleError);
+  }
+
+  getLocation(): Observable<ILocation> {
+    let endpoint = `${API_URL}/tables/location/rows/1`;
+    return this.http.get(endpoint, {search: this.params})
+      .map(this.extractLocationData)
+      .catch(this.handleError);
+  }
+
+  private extractLocationData(res: Response) {
+    let body = res.json();
+    let coords = body.lat_lng.split(',');
+    let location: ILocation = {
+      lat: parseFloat(coords[0]),
+      lng: parseFloat(coords[1]),
+      city: body.city,
+      state: body.state,
+      state_code: body.state_code,
+      country_code: body.country_code,
+      street_name: body.street_name,
+      street_number: body.street_number,
+      zip: body.zip,
+      zoom_level: body.zoom_level,
+      icon: (body.marker_icon ? (API_BASE_URL + body.marker_icon.url) : null)
+    };
+
+    return location || {};
   }
 
   private extractContactData(res: Response) {
