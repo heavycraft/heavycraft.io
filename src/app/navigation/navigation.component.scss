@@ -1,8 +1,9 @@
 @import '../../variables';
 
 .navbar-brand {
-  margin: 0.5rem;
-  height: 3rem;
+  $height: 3rem;
+  height: $height;
+  margin: ($navbar-height - $height) / 2;
 }
 
 .navbar-brand>img {
@@ -11,14 +12,18 @@
 }
 
 .nav >li >a {
+  $nav-link-padding: 0.425rem; // this is hardcoded in bootstrap scss (navbar)
   font-family: $headings-font-family;
-  margin-top: .825rem;
+  margin-top: ($navbar-height - ($line-height-base + $nav-link-padding * 2))/2;
 }
 
 .navbar-toggler {
+  $toggler-line-height: 1rem; // this is hardcoded in bootstrap scss (navbar)
+  $toggler-padding: 0.5rem; // this is hardcoded in bootstrap scss (navbar)
   color: $gray-lighter;
   border: none;
   margin-top: 0.875rem;
+  margin-top: ($navbar-height - ($toggler-line-height + $toggler-padding * 2))/2;
 }
 
 .collapse.in {
