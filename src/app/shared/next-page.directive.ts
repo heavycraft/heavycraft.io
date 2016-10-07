@@ -9,8 +9,6 @@ export class NextPageDirective implements AfterViewInit {
 
   button: HTMLElement;
   bottom: number;
-  height = 50;
-  margin = 50;
 
   @HostListener('window:resize')
   onResize() {
@@ -24,13 +22,11 @@ export class NextPageDirective implements AfterViewInit {
     this.button.innerHTML = '&darr;';
     this.renderer.setElementClass(this.button, 'next-page', true);
     this.renderer.setElementAttribute(this.button, 'href', `#${this.nextPage}`);
-    this.renderer.setElementStyle(this.button, 'fontSize', `${this.height}px`);
-    this.renderer.setElementStyle(this.button, 'lineHeight', `${this.height}px`);
     this.setBottom();
   }
 
   private setBottom(){
-    let bottom = this.el.nativeElement.getBoundingClientRect().bottom - this.height - this.margin;
+    let bottom = this.el.nativeElement.getBoundingClientRect().bottom;
     this.renderer.setElementStyle(this.button, 'top', bottom + 'px');
   }
 

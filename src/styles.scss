@@ -17,11 +17,24 @@
 }
 
 a.next-page {
+    $size: 3rem;
+
     position: absolute;
-    left: 50%;
-    width: 0;
+    //left: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: $size;
+    height: $size;
+    font-size: $size;
+    line-height: $size;
+    //margin-left: -$size/2;
+    
     color: white;
     text-decoration: none;
+    text-align: center;
+    transform: translateY(-200%);
+
     &:hover{
         text-decoration: none;
     }
