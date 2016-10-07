@@ -22,6 +22,8 @@ import { MailService } from './mail.service';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { SocialComponent } from './social/social.component';
 
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,7 @@ import { SocialComponent } from './social/social.component';
     ReactiveFormsModule,
     HttpModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDpHoaD-fGylgBp4YaDdDdD641sZIxKHY4'
+      apiKey: environment.mapsKey
     })
   ],
   providers: [HeavyCraftService, MailService],
