@@ -1,23 +1,33 @@
 @import '../../variables';
 
 .navbar-brand {
-    padding: 0px;
-  height: 80px;
+  margin: 0.5rem;
+  height: 3rem;
 }
 
 .navbar-brand>img {
   height: 100%;
-  padding: 15px;
   width: auto;
 }
 
 .nav >li >a {
-  padding-top: 30px;
-  padding-bottom: 30px;
   font-family: $headings-font-family;
+  margin-top: .825rem;
 }
 
-.navbar-toggle {
-  padding: 10px;
-  margin: 25px 15px 25px 0;
+.navbar-toggler {
+  color: $gray-lighter;
+  border: none;
+  margin-top: 0.875rem;
+}
+
+.collapse.in {
+    width: 100%;
+    clear: both;
+    text-align: center;
+    .navbar-nav .nav-item{
+        +.nav-item{
+            margin-left: 0;
+        }
+    }
 }
