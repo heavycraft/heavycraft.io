@@ -14,7 +14,8 @@ export class AppComponent {
 
   brand = {
     name: 'Heavy Craft',
-    logo: 'assets/logo.svg'
+    logo: 'assets/logo.svg',
+    location: 'Portland Oregon USA'
   };
 
   navigation = [
