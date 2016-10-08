@@ -1,7 +1,7 @@
-<div class="container p-y-3">
+<div class="container p-y-2">
   <div class="row">
-    <div class="col-xs text-xs-center" *ngFor="let link of social | async">
-      <a class="m-b-2 text-uppercase letter-space" [href]="link.url">{{link.name}}</a>
+    <div class="col-xs-12 col-sm-4 col-md text-xs-center m-y-1" *ngFor="let link of social | async">
+      <a class="text-uppercase letter-space" [href]="link.url">{{link.name}}</a>
     </div>
   </div>
 </div>
