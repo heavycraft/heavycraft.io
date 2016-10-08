@@ -7,7 +7,8 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <hc-contact-form></hc-contact-form>
+      <hc-contact-form *ngIf="!hasSent" (response)="handleResponse($event)"></hc-contact-form>
+      <hc-confirmation *ngIf="hasSent" [userName]="userName"></hc-confirmation>
     </div>
   </div>
 </div>

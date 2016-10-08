@@ -15,6 +15,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ContactFormComponent } from './contact/contact-form/contact-form.component';
 import { MapComponent } from './map/map.component';
 import { SocialComponent } from './social/social.component';
+import { ConfirmationComponent } from './contact/confirmation/confirmation.component';
 
 // Directives
 import { NextPageDirective } from './shared/next-page.directive';
@@ -24,7 +25,6 @@ import { HeavyCraftService } from './heavy-craft.service';
 import { MailService } from './mail.service';
 
 import { environment } from '../environments/environment';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +36,8 @@ import { environment } from '../environments/environment';
     ContactComponent,
     ContactFormComponent,
     MapComponent,
-    SocialComponent
+    SocialComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MailService } from './../../mail.service';
 
@@ -9,7 +9,7 @@ import { MailService } from './../../mail.service';
 })
 export class ContactFormComponent implements OnInit {
 
-  messageSent = false;
+  @Output() response = new EventEmitter();
   contactForm: FormGroup;
   fullName = new FormControl('', Validators.required);
   emailAddress = new FormControl('',
@@ -34,9 +34,8 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.contactForm);
     this.mail.send({
-      to: 'broc@heavycraft.io, aaron@heavycraft.io',
+      to: 'broc@heavycraft.io',
       from: 'notifications@heavycraft.io',
       subject: 'New Message from ' + this.fullName.value,
       text: `
@@ -53,7 +52,10 @@ export class ContactFormComponent implements OnInit {
         </p>
       `
     }).subscribe((res) => {
-      this.messageSent = true;
+      this.response.emit({
+        sent: true,
+        originalMessage: this.contactForm
+      });
     });
 
   }

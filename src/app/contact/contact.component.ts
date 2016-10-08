@@ -9,11 +9,22 @@ import { HeavyCraftService } from '../heavy-craft.service';
 export class ContactComponent implements OnInit {
 
   contact: any;
+  hasSent = false;
+  hasError = false;
+  userName: string;
 
   constructor(private hcService: HeavyCraftService) { }
 
   ngOnInit() {
     this.hcService.getContact().subscribe( contact => this.contact = contact);
+  }
+
+  handleResponse(res) {
+    if (res && res.sent) {
+      this.hasSent = true;
+      this.userName = res.originalMessage.controls.fullName.value;
+      console.log(res.originalMessage)
+    }
   }
 
 }
