@@ -14,7 +14,7 @@ export class HeroComponent implements OnInit {
   @Input() subHeader: string;
 
   @HostBinding('style.backgroundImage') get backgroundImage() {
-    return this.sanitizer.bypassSecurityTrustStyle(`url('${this.image}'`);
+    return this.sanitizer.bypassSecurityTrustStyle(`url('${this.image}')`);
   }
 
   constructor(private sanitizer: DomSanitizer) { }
