@@ -1,9 +1,9 @@
-import { Directive, ElementRef, HostListener, Input, Renderer, AfterViewInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[nextPage]'
 })
-export class NextPageDirective implements AfterViewInit {
+export class NextPageDirective implements OnInit {
 
   @Input('nextPage') nextPage: string;
 
@@ -17,7 +17,7 @@ export class NextPageDirective implements AfterViewInit {
 
   constructor(private el: ElementRef, private renderer: Renderer) { }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.button = this.renderer.createElement(this.el.nativeElement, 'a');
     this.button.innerHTML = '&darr;';
     this.renderer.setElementClass(this.button, 'next-page', true);
