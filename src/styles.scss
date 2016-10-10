@@ -34,6 +34,7 @@ a.next-page {
     text-decoration: none;
     text-align: center;
     transform: translateY(-200%);
+    transition: opacity 250ms ease-out;
 
     &:hover{
         text-decoration: none;

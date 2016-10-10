@@ -1,4 +1,8 @@
 import { Directive, ElementRef, HostListener, Input, Renderer, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/delay';
 
 @Directive({
   selector: '[nextPage]'
@@ -9,11 +13,10 @@ export class NextPageDirective implements OnInit {
 
   button: HTMLElement;
   bottom: number;
-
-  @HostListener('window:resize')
-  onResize() {
-    this.setBottom();
-  }
+  resize$ = Observable.fromEvent(window, 'resize')
+      .do(this.hide.bind(this))
+      .debounceTime(250)
+      .delay(250);
 
   constructor(private el: ElementRef, private renderer: Renderer) { }
 
@@ -23,11 +26,24 @@ export class NextPageDirective implements OnInit {
     this.renderer.setElementClass(this.button, 'next-page', true);
     this.renderer.setElementAttribute(this.button, 'href', `#${this.nextPage}`);
     this.setBottom();
+
+    this.resize$.subscribe( () => {
+      this.setBottom();
+      this.show();
+    });
   }
 
   private setBottom(){
     let bottom = this.el.nativeElement.getBoundingClientRect().bottom;
     this.renderer.setElementStyle(this.button, 'top', bottom + 'px');
+  }
+
+  private hide() {
+    this.renderer.setElementStyle(this.button, 'opacity', '0');
+  }
+
+  private show() {
+    this.renderer.setElementStyle(this.button, 'opacity', '1');
   }
 
 }
