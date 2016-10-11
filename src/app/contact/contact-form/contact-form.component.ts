@@ -38,7 +38,7 @@ export class ContactFormComponent implements OnInit {
     this.submitted = true;
     this.contactForm.disable();
     this.mail.send({
-      to: 'broc@heavycraft.io',
+      to: 'contact@heavycraft.io',
       from: 'notifications@heavycraft.io',
       subject: 'New Message from ' + this.fullName.value,
       text: `
