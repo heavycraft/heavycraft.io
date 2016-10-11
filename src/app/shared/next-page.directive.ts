@@ -1,8 +1,8 @@
 import { Directive, ElementRef, HostListener, Input, Renderer, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/map';
+import { WindowRef } from './../window.service';
 
 @Directive({
   selector: '[nextPage]'
@@ -13,12 +13,10 @@ export class NextPageDirective implements OnInit {
 
   button: HTMLElement;
   bottom: number;
-  resize$ = Observable.fromEvent(window, 'resize')
-      .do(this.hide.bind(this))
-      .debounceTime(250)
-      .delay(250);
 
-  constructor(private el: ElementRef, private renderer: Renderer) { }
+  resize$ = Observable.fromEvent(this.window.nativeWindow, 'resize').map(() => 'resize');
+
+  constructor(private el: ElementRef, private renderer: Renderer, private window: WindowRef) { }
 
   ngOnInit() {
     this.button = this.renderer.createElement(this.el.nativeElement, 'a');
@@ -27,23 +25,14 @@ export class NextPageDirective implements OnInit {
     this.renderer.setElementAttribute(this.button, 'href', `#${this.nextPage}`);
     this.setBottom();
 
-    this.resize$.subscribe( () => {
+    this.resize$.subscribe( (scrolling) => {
       this.setBottom();
-      this.show();
     });
   }
 
   private setBottom(){
-    let bottom = this.el.nativeElement.getBoundingClientRect().bottom;
+    let bottom = this.el.nativeElement.getBoundingClientRect().bottom + this.window.nativeWindow.pageYOffset;
     this.renderer.setElementStyle(this.button, 'top', bottom + 'px');
-  }
-
-  private hide() {
-    this.renderer.setElementStyle(this.button, 'opacity', '0');
-  }
-
-  private show() {
-    this.renderer.setElementStyle(this.button, 'opacity', '1');
   }
 
 }

@@ -23,8 +23,10 @@ import { NextPageDirective } from './shared/next-page.directive';
 // Services
 import { HeavyCraftService } from './heavy-craft.service';
 import { MailService } from './mail.service';
+import { WindowRef } from './window.service';
 
 import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +50,7 @@ import { environment } from '../environments/environment';
     }),
     NgbModule
   ],
-  providers: [HeavyCraftService, MailService],
+  providers: [HeavyCraftService, MailService, WindowRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
