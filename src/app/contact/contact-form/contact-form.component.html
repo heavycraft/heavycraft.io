@@ -34,5 +34,8 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-outline-primary" [disabled]="!contactForm.valid">Send Message</button>
+  <button type="submit" class="btn btn-outline-primary" [disabled]="!contactForm.valid || submitted">
+    <span *ngIf="!submitted">Send Message</span>
+    <span *ngIf="submitted">Sending ...</span>
+  </button>
 </form>

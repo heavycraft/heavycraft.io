@@ -10,6 +10,7 @@ import { MailService } from './../../mail.service';
 export class ContactFormComponent implements OnInit {
 
   @Output() response = new EventEmitter();
+  submitted = false;
   contactForm: FormGroup;
   fullName = new FormControl('', Validators.required);
   emailAddress = new FormControl('',
@@ -34,6 +35,8 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
+    this.contactForm.disable();
     this.mail.send({
       to: 'broc@heavycraft.io',
       from: 'notifications@heavycraft.io',
