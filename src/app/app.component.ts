@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeavyCraftService } from './heavy-craft.service';
 import { Observable } from 'rxjs/Observable';
 
@@ -11,7 +11,6 @@ export class AppComponent {
 
   hero: any;
   heroIsLoading = true;
-  heroComplete = false;
 
   brand = {
     name: 'Heavy Craft',
@@ -25,17 +24,11 @@ export class AppComponent {
     { name: 'Contact Us', href: '#contact' },
   ];
 
-  constructor(private hcService: HeavyCraftService, private change: ChangeDetectorRef) {
+  constructor(private hcService: HeavyCraftService) {
     hcService.getHero().subscribe( (hero) => {
       this.hero = hero;
       this.heroIsLoading = false;
     });
-  }
-
-  heroLoadComplete(status: boolean) {
-    console.log('ello');
-    this.heroComplete = status;
-
   }
 
 }
