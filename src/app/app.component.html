@@ -6,10 +6,10 @@
     [header]="hero.header" 
     [subHeader]="hero.subHeader">
 </hc-hero>
-<hc-about id="about" class="pad-anchor"></hc-about>
-<hc-contact id="contact" class="pad-anchor"></hc-contact>
-<hc-map id="map" class="pad-anchor"></hc-map>
-<hc-social id="social" class="pad-anchor"></hc-social>
+<hc-about id="about" class="pad-anchor" *ngIf="!heroIsLoading"></hc-about>
+<hc-contact id="contact" class="pad-anchor" *ngIf="!heroIsLoading"></hc-contact>
+<hc-map id="map" class="pad-anchor" *ngIf="!heroIsLoading"></hc-map>
+<hc-social id="social" class="pad-anchor" *ngIf="!heroIsLoading"></hc-social>
 <footer class="text-uppercase bg-inverse">
     <div class="container text-xs-center"><small>© {{year}} {{brand.name}} {{brand.location}}</small></div>
 </footer>
