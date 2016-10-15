@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
 
 // Components
 import { AppComponent } from './app.component';
@@ -48,7 +49,8 @@ import { environment } from '../environments/environment';
     AgmCoreModule.forRoot({
       apiKey: environment.mapsKey
     }),
-    NgbModule
+    NgbModule,
+    Ng2PageScrollModule
   ],
   providers: [HeavyCraftService, MailService, WindowRef],
   bootstrap: [AppComponent]

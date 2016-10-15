@@ -1,11 +1,11 @@
-<a class="navbar-brand" href="#"><img [src]="logo" class="img-fluid" [alt]="brand" align="middle" /></a>
+<a pageScroll class="navbar-brand" href="#hero"><img [src]="logo" class="img-fluid" [alt]="brand" align="middle" /></a>
 <button class="navbar-toggler hidden-md-up pull-xs-right" type="button" (click)="isCollapsed = !isCollapsed">
     &#x2261;
 </button>
 <div class="collapse navbar-toggleable-sm pull-xs-right" [ngbCollapse]="isCollapsed">
   <ul class="nav navbar-nav">
     <li #navItems class="nav-item" *ngFor="let link of links">
-      <a class="nav-link text-uppercase letter-space m-x-1" [href]="link.href">{{link.name}}</a>
+      <a pageScroll class="nav-link text-uppercase letter-space m-x-1" [href]="link.href">{{link.name}}</a>
     </li>
   </ul>
 </div>
